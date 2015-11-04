@@ -1,14 +1,15 @@
-package me.creepsterlgc.coreworlds.events;
+package me.creepsterlgc.corezones.events;
 
 import java.util.Optional;
 
 import me.creepsterlgc.core.utils.PermissionsUtils;
-import me.creepsterlgc.coreworlds.customized.CWorld;
-import me.creepsterlgc.coreworlds.customized.Worlds;
+import me.creepsterlgc.core.utils.ZoneUtils;
 
 import org.spongepowered.api.entity.living.player.Player;
 import org.spongepowered.api.event.Listener;
 import org.spongepowered.api.event.block.InteractBlockEvent;
+import org.spongepowered.api.text.Texts;
+import org.spongepowered.api.text.format.TextColors;
 
 
 public class EventPlayerInteractBlock {
@@ -20,12 +21,13 @@ public class EventPlayerInteractBlock {
     	if(!optional.isPresent()) return;
 
     	Player player = optional.get();
-    	CWorld w = Worlds.get(player.getWorld().getName());
     	
-    	if(w == null) return;
-	    if(!w.getBuild() && !PermissionsUtils.has(player, "core.world." + w.getName() + ".bypass.interact")) {
+    	if(PermissionsUtils.has(player, "core.zone.bypass." + player.getWorld().getName().toLowerCase())) return;
+    	
+		if(!ZoneUtils.canInteract(player, event.getTargetBlock().getLocation().get())) {
+			player.sendMessage(Texts.of(TextColors.RED, "You do not have permissions!"));
 		    event.setCancelled(true);
-	    }
+		}
     	
     }
     
@@ -36,12 +38,13 @@ public class EventPlayerInteractBlock {
     	if(!optional.isPresent()) return;
 
     	Player player = optional.get();
-    	CWorld w = Worlds.get(player.getWorld().getName());
     	
-    	if(w == null) return;
-	    if(!w.getBuild() && !PermissionsUtils.has(player, "core.world." + w.getName() + ".bypass.interact")) {
+    	if(PermissionsUtils.has(player, "core.zone.bypass." + player.getWorld().getName().toLowerCase())) return;
+    	
+		if(!ZoneUtils.canInteract(player, event.getTargetBlock().getLocation().get())) {
+			player.sendMessage(Texts.of(TextColors.RED, "You do not have permissions!"));
 		    event.setCancelled(true);
-	    }
+		}
     	
     }
     
