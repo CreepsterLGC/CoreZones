@@ -1,9 +1,9 @@
-package me.creepsterlgc.corezones.events;
+package main.java.me.creepsterlgc.corezones.events;
 
 import java.util.Optional;
 
-import me.creepsterlgc.core.utils.PermissionsUtils;
-import me.creepsterlgc.core.utils.ZoneUtils;
+import main.java.me.creepsterlgc.core.utils.PermissionsUtils;
+import main.java.me.creepsterlgc.core.utils.ZoneUtils;
 
 import org.spongepowered.api.block.BlockSnapshot;
 import org.spongepowered.api.data.Transaction;
