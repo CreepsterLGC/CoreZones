@@ -40,8 +40,8 @@ public class CoreZones {
     	game.getEventManager().registerListeners(this, new EventPlayerBlockBreak());
     	game.getEventManager().registerListeners(this, new EventPlayerInteractBlock());
     	
-    	if(FileCommands.SELECTION()) game.getCommandDispatcher().register(this, new CommandSelection(), "selection", "s");
-    	if(FileCommands.ZONE()) game.getCommandDispatcher().register(this, new CommandZone(), "zone", "z");
+    	if(FileCommands.SELECTION()) game.getCommandManager().register(this, new CommandSelection(), "selection", "s");
+    	if(FileCommands.ZONE()) game.getCommandManager().register(this, new CommandZone(), "zone", "z");
     	
     }
     
